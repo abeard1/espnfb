@@ -20,6 +20,7 @@ class League(object):
         self.espn_s2 = espn_s2
         self.swid = swid
         self._fetch_league()
+	self.cookies = None
 
     def __repr__(self):
         return 'League(%s, %s)' % (self.league_id, self.year, )
@@ -30,14 +31,14 @@ class League(object):
             'seasonId': self.year
         }
 
-        cookies = None
+	
         if self.espn_s2 and self.swid:
-            cookies = {
+            self.cookies = {
                 'espn_s2': self.espn_s2,
                 'SWID': self.swid
             }
 
-        r = requests.get('%sleagueSettings' % (self.ENDPOINT, ), params=params, cookies=cookies)
+        r = requests.get('%sleagueSettings' % (self.ENDPOINT, ), params=params, cookies=self.cookies)
         self.status = r.status_code
         data = r.json()
 
@@ -58,7 +59,7 @@ class League(object):
         teams = data['leaguesettings']['teams']
 
         for team in teams:
-            self.teams.append(Team(teams[team]))
+            self.teams.append(Team(teams[team], self.cookies))
 
         # replace opponentIds in schedule with team instances
         for team in self.teams:
