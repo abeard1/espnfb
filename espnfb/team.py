@@ -18,7 +18,7 @@ def __init__(self, data, league_id, year, cookies):
         self.league_id = league_id
         self.cookies = cookies
         self.year = year
-        self.ENDPOINT = "http://games.espn.com/ffl/api/v2/"
+        self.ENDPOINT = "http://games.espn.com/fba/api/v2/"
         self._fetch_schedule(data)
 
     def __repr__(self):
