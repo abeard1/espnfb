@@ -1,15 +1,15 @@
 from setuptools import setup
 
 setup(
-    name='espnff',
+    name='espnfb',
 
-    packages=['espnff'],
+    packages=['espnfb'],
 
     include_package_data=True,
 
     version='1.3.1',
 
-    description='ESPN fantasy football API',
+    description='ESPN fantasy basketball API',
 
     author='Rich Barton',
 
