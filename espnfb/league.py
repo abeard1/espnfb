@@ -20,7 +20,7 @@ class League(object):
         self.espn_s2 = espn_s2
         self.swid = swid
         self._fetch_league()
-	self.cookies = None
+        self.cookies = None
 
     def __repr__(self):
         return 'League(%s, %s)' % (self.league_id, self.year, )
@@ -59,7 +59,7 @@ class League(object):
         teams = data['leaguesettings']['teams']
 
         for team in teams:
-            self.teams.append(Team(teams[team], self.cookies))
+            self.teams.append(Team(teams[team], self.league_id, self.year, self.cookies))
 
         # replace opponentIds in schedule with team instances
         for team in self.teams:
