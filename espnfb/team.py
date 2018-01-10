@@ -60,7 +60,19 @@ class Team(object):
         r = requests.get('%srosterInfo' % (self.ENDPOINT, ), params=params, cookies=self.cookies)
         data = r.json()      
 
-	
+        players = data['leagueRosters']['teams'][0]['slots']
+        
+        starters = []
+        ir = []
+
+        for p in players:
+            if 'player' in p:
+                if p['slotCategoryId'] == 13:
+                    ir.append(Player(p))
+                else:
+                    starters.append(Player(p))
+
+        return {'starters' : starters, 'ir' : ir }
 
         '''
         players = data['leagueRosters']['teams'][0]['slots']
