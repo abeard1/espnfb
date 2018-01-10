@@ -1,4 +1,5 @@
 import requests
+from .player import Player
 
 class Team(object):
     '''Teams are part of the league'''
@@ -68,9 +69,9 @@ class Team(object):
         for p in players:
             if 'player' in p:
                 if p['slotCategoryId'] == 13:
-                    ir.append(Player(p))
+                    ir.append(Player(p['player']))
                 else:
-                    starters.append(Player(p))
+                    starters.append(Player(p['player']))
 
         return {'starters' : starters, 'ir' : ir }
 

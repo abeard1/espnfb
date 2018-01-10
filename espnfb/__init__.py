@@ -1,5 +1,6 @@
 __all__ = ['League',
            'Team',
+	   'Player',
            'Settings',
            'Matchup',
            'ESPNFFException',
@@ -10,6 +11,7 @@ __all__ = ['League',
 
 from .league import League
 from .team import Team
+from .player import Player
 from .settings import Settings
 from .matchup import Matchup
 from .exception import (ESPNFFException,

@@ -1,6 +1,5 @@
 class Player(object):
     def __init__(self, data):
-        return None
         self.first_name = data['firstName']
         self.last_name = data['lastName']
         self.draft_rank = data['draftRank']
